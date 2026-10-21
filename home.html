@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="The creative portfolio of Njenga: graphic design, video editing, data analysis, AI automation, and web development.">
+    <title>Njenga — Creative Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #171717;
+            --muted: #66645f;
+            --paper: #fff;
+            --line: #e8e6e2;
+            --accent: #ef4b2b;
+            --serif: "Times New Roman", Times, serif;
+            --sans: "Montserrat", Arial, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page-shell {
+            width: min(1280px, calc(100% - 96px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .wordmark {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            text-decoration: none;
+        }
+
+        .wordmark span {
+            color: var(--accent);
+        }
+
+        .primary-nav {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .primary-nav a {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+
+        .primary-nav a:hover,
+        .primary-nav a:focus-visible {
+            color: var(--accent);
+        }
+
+        .primary-nav .nav-contact {
+            padding: 13px 18px;
+            border: 1px solid var(--ink);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: none;
+            color: var(--ink);
+            font: 600 12px var(--sans);
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 570px;
+            padding: 106px 0 80px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 230px;
+            align-items: end;
+            gap: 48px;
+        }
+
+        .eyebrow,
+        .section-label {
+            margin: 0 0 22px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .17em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 880px;
+            margin: 0;
+            font-size: clamp(52px, 8vw, 108px);
+            font-weight: 600;
+            letter-spacing: -.09em;
+            line-height: .99;
+        }
+
+        .hero h1 em {
+            color: var(--accent);
+            font-family: var(--serif);
+            font-weight: 400;
+            letter-spacing: -.075em;
+        }
+
+        .hero-aside {
+            padding-bottom: 9px;
+        }
+
+        .hero-aside p {
+            margin: 0 0 25px;
+            color: var(--muted);
+            font-family: var(--serif);
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .text-link::after {
+            content: "↗";
+            color: var(--accent);
+            font-size: 17px;
+            transition: transform .2s ease;
+        }
+
+        .text-link:hover::after {
+            transform: translate(3px, -3px);
+        }
+
+        .hero-rule {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 75px;
+            color: var(--muted);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .hero-rule::before {
+            width: 38px;
+            height: 1px;
+            background: var(--accent);
+            content: "";
+        }
+
+        .work-section {
+            padding: 64px 0 110px;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .section-heading h2,
+        .about-copy h2,
+        .contact-section h2 {
+            margin: 0;
+            font-size: clamp(32px, 4vw, 50px);
+            font-weight: 600;
+            letter-spacing: -.07em;
+        }
+
+        .section-heading h2 em,
+        .about-copy h2 em,
+        .contact-section h2 em {
+            font-family: var(--serif);
+            font-weight: 400;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 48px 24px;
+        }
+
+        .project {
+            min-width: 0;
+        }
+
+        .project-visual {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1.38;
+            background: #f0eeea;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform .45s ease;
+        }
+
+        .project:hover .project-visual img {
+            transform: scale(1.035);
+        }
+
+        .project-number {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            padding: 9px 11px;
+            background: var(--paper);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .project-caption {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            gap: 18px;
+            padding-top: 16px;
+        }
+
+        .project-caption h3 {
+            margin: 0 0 6px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -.035em;
+        }
+
+        .project-caption p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: .03em;
+        }
+
+        .project-arrow {
+            color: var(--accent);
+            font-size: 19px;
+        }
+
+        .uploads-section {
+            padding: 75px 0 100px;
+            border-top: 1px solid var(--line);
+        }
+
+        .uploads-heading {
+            align-items: end;
+            margin-bottom: 30px;
+        }
+
+        .uploads-instructions {
+            margin: 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .owner-access {
+            margin-bottom: 22px;
+            padding: 20px;
+            border: 1px solid var(--line);
+        }
+
+        .owner-login {
+            display: flex;
+            align-items: end;
+            gap: 14px;
+        }
+
+        .owner-login[hidden],
+        .owner-actions[hidden],
+        .upload-form[hidden] {
+            display: none;
+        }
+
+        .owner-login .upload-field {
+            max-width: 300px;
+        }
+
+        .owner-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .owner-label {
+            margin: 0;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .owner-hint {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        .owner-hint code {
+            padding: 2px 4px;
+            background: #f4f2ee;
+            color: var(--ink);
+        }
+
+        .upload-form {
+            display: flex;
+            align-items: end;
+            gap: 14px;
+            margin-bottom: 28px;
+            padding: 22px;
+            border: 1px solid var(--line);
+        }
+
+        .upload-field {
+            display: grid;
+            flex: 1;
+            gap: 9px;
+            color: var(--muted);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .upload-field select,
+        .upload-field input {
+            min-width: 0;
+            min-height: 46px;
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-radius: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font: 500 11px var(--sans);
+            letter-spacing: normal;
+            text-transform: none;
+        }
+
+        .upload-field input[type="file"] {
+            padding: 9px;
+        }
+
+        .upload-button {
+            min-height: 46px;
+            padding: 0 19px;
+            border: 0;
+            background: var(--ink);
+            color: var(--paper);
+            font: 700 10px var(--sans);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .upload-button:hover {
+            background: var(--accent);
+        }
+
+        .upload-button:disabled {
+            background: var(--muted);
+            cursor: wait;
+        }
+
+        .upload-status {
+            min-height: 20px;
+            margin: -14px 0 22px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .upload-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 22px;
+        }
+
+        .upload-filter {
+            padding: 10px 13px;
+            border: 1px solid var(--line);
+            background: var(--paper);
+            color: var(--muted);
+            font: 600 9px var(--sans);
+            letter-spacing: .06em;
+            cursor: pointer;
+        }
+
+        .upload-filter[aria-pressed="true"],
+        .upload-filter:hover {
+            border-color: var(--ink);
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px 20px;
+        }
+
+        .upload-card {
+            min-width: 0;
+        }
+
+        .upload-card-button {
+            position: relative;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            aspect-ratio: 1.25;
+            padding: 0;
+            border: 0;
+            background: #f0eeea;
+            cursor: zoom-in;
+        }
+
+        .upload-card-button img,
+        .upload-card-button video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform .35s ease;
+        }
+
+        .upload-card-button:hover img,
+        .upload-card-button:hover video {
+            transform: scale(1.04);
+        }
+
+        .upload-card-type {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 8px 10px;
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .upload-card-play {
+            position: absolute;
+            right: 13px;
+            bottom: 13px;
+            display: grid;
+            width: 36px;
+            height: 36px;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 13px;
+        }
+
+        .upload-card h3 {
+            overflow: hidden;
+            margin: 12px 0 5px;
+            font-size: 13px;
+            font-weight: 600;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .upload-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 9px;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        .upload-empty {
+            grid-column: 1 / -1;
+            padding: 32px 20px;
+            border: 1px dashed var(--line);
+            color: var(--muted);
+            font-family: var(--serif);
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .preview-dialog {
+            width: min(1000px, calc(100% - 36px));
+            max-width: none;
+            max-height: calc(100% - 36px);
+            padding: 0;
+            border: 0;
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .preview-dialog::backdrop {
+            background: rgb(0 0 0 / 84%);
+        }
+
+        .preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 18px;
+        }
+
+        .preview-title {
+            overflow: hidden;
+            margin: 0;
+            font-size: 12px;
+            font-weight: 600;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .preview-actions {
+            display: flex;
+            flex: 0 0 auto;
+            gap: 8px;
+        }
+
+        .preview-actions button {
+            padding: 9px 12px;
+            border: 1px solid #666;
+            background: transparent;
+            color: var(--paper);
+            font: 600 9px var(--sans);
+            cursor: pointer;
+        }
+
+        .preview-media {
+            display: grid;
+            max-height: calc(100vh - 100px);
+            min-height: 200px;
+            place-items: center;
+            background: #080808;
+        }
+
+        .preview-media img,
+        .preview-media video {
+            display: block;
+            max-width: 100%;
+            max-height: calc(100vh - 100px);
+            object-fit: contain;
+        }
+
+        .preview-media[hidden],
+        .preview-media img[hidden],
+        .preview-media video[hidden] {
+            display: none;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 80px;
+            padding: 92px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .about-copy h2 {
+            max-width: 500px;
+            line-height: 1.08;
+        }
+
+        .about-copy > p {
+            max-width: 570px;
+            margin: 22px 0 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 28px;
+            align-content: center;
+        }
+
+        .service-list span {
+            padding: 17px 0;
+            border-bottom: 1px solid var(--line);
+            font-family: var(--serif);
+            font-size: 19px;
+        }
+
+        .contact-section {
+            position: relative;
+            overflow: hidden;
+            padding: 76px 0 82px;
+            background: #f4f2ee;
+        }
+
+        .contact-section .page-shell {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section h2 {
+            max-width: 760px;
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: 1.02;
+        }
+
+        .contact-bottom {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 32px;
+        }
+
+        .contact-bottom p {
+            max-width: 340px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 16px 21px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background .2s ease;
+        }
+
+        .contact-button:hover {
+            background: var(--ink);
+        }
+
+        .site-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 24px 0;
+            color: var(--muted);
+            font-size: 9px;
+            letter-spacing: .04em;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 760px) {
+            .page-shell {
+                width: min(100% - 40px, 560px);
+            }
+
+            .site-header {
+                height: 72px;
+            }
+
+            .menu-toggle {
+                display: block;
+                padding: 12px 0 12px 12px;
+            }
+
+            .primary-nav {
+                position: absolute;
+                z-index: 5;
+                top: 72px;
+                right: 20px;
+                left: 20px;
+                display: none;
+                align-items: stretch;
+                gap: 0;
+                padding: 10px 20px;
+                border: 1px solid var(--line);
+                background: var(--paper);
+            }
+
+            .primary-nav.is-open {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .primary-nav a {
+                padding: 15px 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .primary-nav a:last-child {
+                border-bottom: 0;
+            }
+
+            .primary-nav .nav-contact {
+                padding: 15px 0;
+                border: 0;
+            }
+
+            .hero {
+                min-height: auto;
+                grid-template-columns: 1fr;
+                gap: 27px;
+                padding: 86px 0 68px;
+            }
+
+            .hero h1 {
+                font-size: clamp(54px, 12.5vw, 88px);
+            }
+
+            .hero-aside {
+                max-width: 330px;
+            }
+
+            .hero-aside p {
+                font-size: 18px;
+            }
+
+            .hero-rule {
+                margin-top: 48px;
+            }
+
+            .work-section {
+                padding: 52px 0 75px;
+            }
+
+            .work-grid {
+                gap: 34px 16px;
+            }
+
+            .upload-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .upload-form {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .owner-login {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .owner-login .upload-field {
+                max-width: none;
+            }
+
+            .upload-button {
+                width: 100%;
+            }
+
+            .project-caption h3 {
+                font-size: 14px;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                padding: 68px 0;
+            }
+
+            .contact-section {
+                padding: 64px 0;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 29px;
+            }
+
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .uploads-section {
+                padding: 60px 0 75px;
+            }
+
+            .project-visual {
+                aspect-ratio: 1.25;
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-bottom {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .site-footer {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header page-shell">
+        <a class="wordmark" href="#home" aria-label="Njenga, back to home">NJENGA<span>.</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">MENU</button>
+        <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+            <a href="#work">Work</a>
+            <a href="#uploads">Uploads</a>
+            <a href="#about">About</a>
+            <a class="nav-contact" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero page-shell" id="home">
+            <div>
+                <p class="eyebrow">Independent creative portfolio</p>
+                <h1>Ideas made<br>to <em>move</em> people.</h1>
+                <div class="hero-rule">Design · Technology · Story</div>
+            </div>
+            <div class="hero-aside">
+                <p>I bring thoughtful design and emerging technology together to make useful, memorable work.</p>
+                <a class="text-link" href="#work">Explore selected work</a>
+            </div>
+        </section>
+
+        <section class="work-section" id="work">
+            <div class="page-shell">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">A few things I do</p>
+                        <h2>Selected <em>work</em></h2>
+                    </div>
+                    <a class="text-link" href="#contact">Have a project in mind?</a>
+                </div>
+                <div class="work-grid">
+                    <article class="project">
+                        <div class="project-visual">
+                            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Colorful abstract graphic design compositions" loading="lazy">
+                            <span class="project-number">01 / DESIGN</span>
+                        </div>
+                        <div class="project-caption">
+                            <div>
+                                <h3>Visual identity &amp; graphic design</h3>
+                                <p>Brand systems · Art direction · Digital design</p>
+                            </div>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </div>
+                    </article>
+                    <article class="project">
+                        <div class="project-visual">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Cinema seats viewed from the back of a theater" loading="lazy">
+                            <span class="project-number">02 / MOTION</span>
+                        </div>
+                        <div class="project-caption">
+                            <div>
+                                <h3>Video editing &amp; motion</h3>
+                                <p>Editing · Storytelling · Short-form video</p>
+                            </div>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </div>
+                    </article>
+                    <article class="project">
+                        <div class="project-visual">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Data analytics dashboard with charts and visualizations" loading="lazy">
+                            <span class="project-number">03 / INSIGHT</span>
+                        </div>
+                        <div class="project-caption">
+                            <div>
+                                <h3>Data, made clear</h3>
+                                <p>Analysis · Visualization · Dashboards</p>
+                            </div>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </div>
+                    </article>
+                    <article class="project">
+                        <div class="project-visual">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Laptop displaying a clean web analytics interface" loading="lazy">
+                            <span class="project-number">04 / DIGITAL</span>
+                        </div>
+                        <div class="project-caption">
+                            <div>
+                                <h3>Websites &amp; smarter workflows</h3>
+                                <p>Web development · AI · Automation</p>
+                            </div>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="uploads-section" id="uploads">
+            <div class="page-shell">
+                <div class="section-heading uploads-heading">
+                    <div>
+                        <p class="section-label">Your project library</p>
+                        <h2>Upload &amp; <em>explore</em></h2>
+                    </div>
+                    <p class="uploads-instructions">Choose a tool category, then add images or videos.</p>
+                </div>
+                <div class="owner-access">
+                    <form class="owner-login" id="owner-login" hidden>
+                        <label class="upload-field" for="owner-email">
+                            Owner email
+                            <input id="owner-email" name="email" type="email" autocomplete="username" required>
+                        </label>
+                        <label class="upload-field" for="owner-password">
+                            Password
+                            <input id="owner-password" name="password" type="password" autocomplete="current-password" required>
+                        </label>
+                        <button class="upload-button" id="owner-login-button" type="submit">Owner sign in</button>
+                    </form>
+                    <div class="owner-actions" id="owner-actions" hidden>
+                        <p class="owner-label" id="owner-label">Signed in as owner</p>
+                        <button class="upload-filter" id="owner-sign-out" type="button">Sign out</button>
+                    </div>
+                    <p class="upload-status" id="owner-status" role="status" aria-live="polite">Connect your Supabase project to enable owner sign-in and shared uploads.</p>
+                    <p class="owner-hint" id="owner-hint">Setup: run <code>supabase-setup.sql</code> in the Supabase SQL Editor, create your owner account, disable public sign-ups, and set its app_metadata to <code>{"portfolio_owner": true}</code>. Then add your project URL and public anon key below in this page. Never use a service-role key here.</p>
+                </div>
+                <form class="upload-form" id="upload-form" hidden>
+                    <label class="upload-field" for="upload-category">
+                        Choose a category
+                        <select id="upload-category" name="category" required>
+                            <option value="photoshop">Photoshop</option>
+                            <option value="illustrator">Illustrator</option>
+                            <option value="premiere">Premiere Pro</option>
+                            <option value="after-effects">After Effects</option>
+                        </select>
+                    </label>
+                    <label class="upload-field" for="upload-title">
+                        Project title
+                        <input id="upload-title" name="title" type="text" maxlength="100" placeholder="Optional — defaults to file name">
+                    </label>
+                    <label class="upload-field" for="upload-files">
+                        Choose images or videos
+                        <input id="upload-files" name="files" type="file" accept="image/*,video/*" multiple required>
+                    </label>
+                    <button class="upload-button" id="upload-button" type="submit">Upload projects</button>
+                </form>
+                <p class="upload-status" id="upload-status" role="status" aria-live="polite"></p>
+                <div class="upload-filters" role="group" aria-label="Filter uploads by category">
+                    <button class="upload-filter" type="button" data-filter="all" aria-pressed="true">All uploads</button>
+                    <button class="upload-filter" type="button" data-filter="photoshop" aria-pressed="false">Photoshop</button>
+                    <button class="upload-filter" type="button" data-filter="illustrator" aria-pressed="false">Illustrator</button>
+                    <button class="upload-filter" type="button" data-filter="premiere" aria-pressed="false">Premiere Pro</button>
+                    <button class="upload-filter" type="button" data-filter="after-effects" aria-pressed="false">After Effects</button>
+                </div>
+                <div class="upload-grid" id="upload-grid" aria-live="polite">
+                    <p class="upload-empty">Your uploaded projects will appear here once Supabase is connected.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section page-shell" id="about">
+            <div>
+                <p class="section-label">A little about me</p>
+                <div class="about-copy">
+                    <h2>Creative thinking.<br><em>Practical making.</em></h2>
+                    <p>I work across design, video, data, and digital tools—bringing each discipline together around the problem at hand. The goal is always clear: make something considered, useful, and human.</p>
+                </div>
+            </div>
+            <div class="service-list" aria-label="Services">
+                <span>Graphic design</span>
+                <span>Video editing</span>
+                <span>Data analysis</span>
+                <span>AI automation</span>
+                <span>Website development</span>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="page-shell">
+                <p class="section-label">Have something in mind?</p>
+                <h2>Let's make something <em>good.</em></h2>
+                <div class="contact-bottom">
+                    <p>Have a project, a question, or an idea you'd like to explore? I'd love to hear about it.</p>
+                    <a class="contact-button" href="mailto:hello@example.com">Start a conversation <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="preview-dialog" id="preview-dialog" aria-labelledby="preview-title">
+        <div class="preview-toolbar">
+            <h2 class="preview-title" id="preview-title"></h2>
+            <div class="preview-actions">
+                <button id="mute-toggle" type="button" hidden>Unmute video</button>
+                <button id="preview-close" type="button" aria-label="Close preview">Close ×</button>
+            </div>
+        </div>
+        <div class="preview-media">
+            <img id="preview-image" alt="">
+            <video id="preview-video" controls playsinline hidden></video>
+        </div>
+    </dialog>
+
+    <footer class="site-footer page-shell">
+        <p>© <span id="year"></span> Njenga. Made with intention.</p>
+        <div class="social-links">
+            <a href="#work">Portfolio</a>
+            <a href="mailto:hello@example.com">Email</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
+        const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+        const STORAGE_BUCKET = "portfolio-uploads";
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector("#primary-nav");
+        const uploadForm = document.querySelector("#upload-form");
+        const ownerLogin = document.querySelector("#owner-login");
+        const ownerLoginButton = document.querySelector("#owner-login-button");
+        const ownerStatus = document.querySelector("#owner-status");
+        const ownerHint = document.querySelector("#owner-hint");
+        const ownerActions = document.querySelector("#owner-actions");
+        const ownerLabel = document.querySelector("#owner-label");
+        const uploadFiles = document.querySelector("#upload-files");
+        const uploadTitle = document.querySelector("#upload-title");
+        const uploadCategory = document.querySelector("#upload-category");
+        const uploadButton = document.querySelector("#upload-button");
+        const uploadStatus = document.querySelector("#upload-status");
+        const uploadGrid = document.querySelector("#upload-grid");
+        const previewDialog = document.querySelector("#preview-dialog");
+        const previewImage = document.querySelector("#preview-image");
+        const previewVideo = document.querySelector("#preview-video");
+        const muteToggle = document.querySelector("#mute-toggle");
+        const categoryNames = {
+            photoshop: "Photoshop",
+            illustrator: "Illustrator",
+            premiere: "Premiere Pro",
+            "after-effects": "After Effects"
+        };
+        const supabaseReady = SUPABASE_URL.includes("YOUR_PROJECT_ID") === false
+            && SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY"
+            && window.supabase?.createClient;
+        const supabaseClient = supabaseReady
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+            : null;
+        let activeFilter = "all";
+        let previewUrl = null;
+        let visibleUploads = new Map();
+
+        function setEmptyMessage(message) {
+            const emptyMessage = document.createElement("p");
+            emptyMessage.className = "upload-empty";
+            emptyMessage.textContent = message;
+            uploadGrid.replaceChildren(emptyMessage);
+        }
+
+        function createUploadCard(upload) {
+            const card = document.createElement("article");
+            const openButton = document.createElement("button");
+            const isVideo = upload.mime_type.startsWith("video/");
+            const preview = isVideo
+                ? document.createElement("video")
+                : document.createElement("img");
+            const category = document.createElement("span");
+            const title = document.createElement("h3");
+            const details = document.createElement("p");
+            const { data } = supabaseClient.storage.from(STORAGE_BUCKET).getPublicUrl(upload.storage_path);
+
+            card.className = "upload-card";
+            openButton.className = "upload-card-button";
+            openButton.type = "button";
+            openButton.dataset.uploadId = upload.id;
+            openButton.setAttribute("aria-label", `Open ${upload.title}`);
+            preview.src = data.publicUrl;
+            if (isVideo) {
+                preview.muted = true;
+                preview.preload = "metadata";
+                preview.playsInline = true;
+            } else {
+                preview.alt = upload.title;
+            }
+            category.className = "upload-card-type";
+            category.textContent = categoryNames[upload.category];
+            title.textContent = upload.title;
+            details.textContent = `${isVideo ? "Video" : "Image"} · ${upload.file_name}`;
+            openButton.append(preview, category);
+            if (isVideo) {
+                const playIcon = document.createElement("span");
+                playIcon.className = "upload-card-play";
+                playIcon.setAttribute("aria-hidden", "true");
+                playIcon.textContent = "▶";
+                openButton.append(playIcon);
+            }
+            card.append(openButton, title, details);
+            visibleUploads.set(upload.id, upload);
+            return card;
+        }
+
+        async function renderUploads() {
+            visibleUploads = new Map();
+            const { data: uploads, error } = await supabaseClient
+                .from("portfolio_uploads")
+                .select("id, title, category, file_name, mime_type, storage_path, created_at")
+                .order("created_at", { ascending: false });
+            if (error) {
+                throw error;
+            }
+            const filteredUploads = uploads
+                .filter((upload) => activeFilter === "all" || upload.category === activeFilter);
+
+            if (filteredUploads.length === 0) {
+                setEmptyMessage(activeFilter === "all"
+                    ? "Your uploaded projects will appear here."
+                    : `No ${categoryNames[activeFilter]} uploads yet.`);
+                return;
+            }
+            uploadGrid.replaceChildren(...filteredUploads.map(createUploadCard));
+        }
+
+        function showPreview(upload) {
+            const isVideo = upload.mime_type.startsWith("video/");
+            const { data } = supabaseClient.storage.from(STORAGE_BUCKET).getPublicUrl(upload.storage_path);
+            previewUrl = data.publicUrl;
+            document.querySelector("#preview-title").textContent = upload.title;
+            previewImage.hidden = isVideo;
+            previewVideo.hidden = !isVideo;
+            muteToggle.hidden = !isVideo;
+            if (isVideo) {
+                previewVideo.src = previewUrl;
+                previewVideo.muted = true;
+                muteToggle.textContent = "Unmute video";
+            } else {
+                previewImage.src = previewUrl;
+                previewImage.alt = upload.title;
+            }
+            previewDialog.showModal();
+            if (isVideo) {
+                previewVideo.play().catch(() => {
+                    uploadStatus.textContent = "Video playback did not start automatically. Use the play control to start it.";
+                });
+            }
+        }
+
+        function clearPreview() {
+            previewVideo.pause();
+            previewVideo.removeAttribute("src");
+            previewVideo.load();
+            previewImage.removeAttribute("src");
+            previewUrl = null;
+        }
+
+        function showOwnerLogin(message) {
+            ownerLogin.hidden = false;
+            ownerActions.hidden = true;
+            uploadForm.hidden = true;
+            ownerStatus.textContent = message;
+        }
+
+        async function applyAuthSession(session) {
+            const user = session?.user;
+            if (!user) {
+                showOwnerLogin("Sign in with the portfolio owner account to upload projects.");
+                return;
+            }
+            if (user.app_metadata?.portfolio_owner !== true) {
+                const { error } = await supabaseClient.auth.signOut();
+                showOwnerLogin(error
+                    ? `This account is not authorized to upload, and sign-out failed: ${error.message}`
+                    : "This account is not authorized to upload. Sign in with the portfolio owner account.");
+                return;
+            }
+
+            ownerLogin.hidden = true;
+            ownerActions.hidden = false;
+            uploadForm.hidden = false;
+            ownerLabel.textContent = `Signed in as ${user.email ?? "portfolio owner"}`;
+            ownerStatus.textContent = "Owner access verified. Uploads are shared with visitors.";
+            await renderUploads();
+        }
+
+        menuToggle.addEventListener("click", () => {
+            const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+            menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+            navigation.classList.toggle("is-open", !isExpanded);
+        });
+
+        navigation.addEventListener("click", (event) => {
+            if (event.target instanceof HTMLAnchorElement) {
+                menuToggle.setAttribute("aria-expanded", "false");
+                navigation.classList.remove("is-open");
+            }
+        });
+
+        if (!window.supabase?.createClient) {
+            ownerStatus.textContent = "Supabase could not be loaded. Check your internet connection, then reload this page.";
+        } else if (!supabaseClient) {
+            ownerStatus.textContent = "Supabase is not configured yet. Add your project URL and public anon key to enable uploads.";
+        } else {
+            ownerHint.textContent = "Only accounts marked portfolio_owner = true in Supabase app_metadata can upload. Database and storage policies enforce this on the server.";
+            ownerLogin.hidden = false;
+            ownerStatus.textContent = "Sign in with the portfolio owner account to upload projects.";
+            renderUploads().catch((error) => {
+                ownerStatus.textContent = `Could not load the shared portfolio: ${error.message}`;
+            });
+            supabaseClient.auth.getSession().then(({ data, error }) => {
+                if (error) {
+                    showOwnerLogin(`Could not check your sign-in: ${error.message}`);
+                    return;
+                }
+                applyAuthSession(data.session).catch((loadError) => {
+                    ownerStatus.textContent = `Could not load the shared portfolio: ${loadError.message}`;
+                });
+            });
+            supabaseClient.auth.onAuthStateChange((_event, session) => {
+                window.setTimeout(() => {
+                    applyAuthSession(session).catch((error) => {
+                        ownerStatus.textContent = `Could not update owner access: ${error.message}`;
+                    });
+                }, 0);
+            });
+        }
+
+        ownerLogin.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            if (!supabaseClient) {
+                ownerStatus.textContent = "Connect your Supabase project before signing in.";
+                return;
+            }
+            ownerLoginButton.disabled = true;
+            ownerStatus.textContent = "Signing in...";
+            try {
+                const { data, error } = await supabaseClient.auth.signInWithPassword({
+                    email: document.querySelector("#owner-email").value.trim(),
+                    password: document.querySelector("#owner-password").value
+                });
+                if (error) {
+                    throw error;
+                }
+                await applyAuthSession(data.session);
+            } catch (error) {
+                showOwnerLogin(`Sign-in failed: ${error.message}`);
+            } finally {
+                ownerLoginButton.disabled = false;
+            }
+        });
+
+        document.querySelector("#owner-sign-out").addEventListener("click", async () => {
+            const { error } = await supabaseClient.auth.signOut();
+            if (error) {
+                ownerStatus.textContent = `Could not sign out: ${error.message}`;
+                return;
+            }
+            showOwnerLogin("You have signed out.");
+        });
+
+        document.querySelectorAll(".upload-filter").forEach((filterButton) => {
+            filterButton.addEventListener("click", () => {
+                activeFilter = filterButton.dataset.filter;
+                document.querySelectorAll(".upload-filter").forEach((button) => {
+                    button.setAttribute("aria-pressed", String(button === filterButton));
+                });
+                if (supabaseClient) {
+                    renderUploads().catch((error) => {
+                        ownerStatus.textContent = `Could not load your uploads: ${error.message}`;
+                    });
+                }
+            });
+        });
+
+        uploadForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            if (!supabaseClient || uploadForm.hidden) {
+                uploadStatus.textContent = "Sign in as the portfolio owner before uploading.";
+                return;
+            }
+            const files = Array.from(uploadFiles.files);
+            if (files.length === 0) {
+                uploadStatus.textContent = "Choose at least one image or video to upload.";
+                return;
+            }
+            if (files.some((file) => !file.type.startsWith("image/") && !file.type.startsWith("video/"))) {
+                uploadStatus.textContent = "Only image and video files can be uploaded.";
+                return;
+            }
+
+            uploadButton.disabled = true;
+            uploadStatus.textContent = "Uploading your projects...";
+            let savedCount = 0;
+            try {
+                for (const [index, file] of files.entries()) {
+                    const title = files.length === 1 && uploadTitle.value.trim()
+                        ? uploadTitle.value.trim()
+                        : file.name.replace(/\.[^.]+$/, "");
+                    const safeFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-120) || "upload";
+                    const storagePath = `${crypto.randomUUID()}-${safeFileName}`;
+                    const { error: storageError } = await supabaseClient.storage
+                        .from(STORAGE_BUCKET)
+                        .upload(storagePath, file, { contentType: file.type, upsert: false });
+                    if (storageError) {
+                        throw storageError;
+                    }
+
+                    const { error: databaseError } = await supabaseClient
+                        .from("portfolio_uploads")
+                        .insert({
+                            title,
+                            category: uploadCategory.value,
+                            file_name: file.name,
+                            mime_type: file.type,
+                            storage_path: storagePath
+                        });
+                    if (databaseError) {
+                        const { error: cleanupError } = await supabaseClient.storage
+                            .from(STORAGE_BUCKET)
+                            .remove([storagePath]);
+                        if (cleanupError) {
+                            throw new Error(`${databaseError.message}; uploaded file cleanup failed: ${cleanupError.message}`);
+                        }
+                        throw databaseError;
+                    }
+                    savedCount = index + 1;
+                }
+                uploadForm.reset();
+                await renderUploads();
+                uploadStatus.textContent = `${savedCount} ${savedCount === 1 ? "project" : "projects"} uploaded and published.`;
+            } catch (error) {
+                uploadStatus.textContent = `Could not upload all projects. ${savedCount} saved; error: ${error.message}`;
+                await renderUploads().catch((loadError) => {
+                    uploadStatus.textContent += ` The gallery could not be refreshed: ${loadError.message}`;
+                });
+            } finally {
+                uploadButton.disabled = false;
+            }
+        });
+
+        uploadGrid.addEventListener("click", (event) => {
+            const openButton = event.target.closest("[data-upload-id]");
+            const upload = openButton && visibleUploads.get(openButton.dataset.uploadId);
+            if (upload) {
+                showPreview(upload);
+            }
+        });
+
+        document.querySelector("#preview-close").addEventListener("click", () => {
+            previewDialog.close();
+        });
+
+        previewDialog.addEventListener("close", clearPreview);
+        previewDialog.addEventListener("click", (event) => {
+            if (event.target === previewDialog) {
+                previewDialog.close();
+            }
+        });
+
+        muteToggle.addEventListener("click", () => {
+            previewVideo.muted = !previewVideo.muted;
+            muteToggle.textContent = previewVideo.muted ? "Unmute video" : "Mute video";
+        });
+
+        document.querySelector("#year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
